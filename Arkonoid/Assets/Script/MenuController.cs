@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuContoller : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     public GameObject optionsPainel, creditsPainel, controllsPainel;
 
