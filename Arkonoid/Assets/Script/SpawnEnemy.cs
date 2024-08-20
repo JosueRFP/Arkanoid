@@ -6,48 +6,60 @@ public class SpawnEnemy : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public float spawnRate;
-    private float timer;
-    public Transform[] spawnPoints; // Array
+    float timer;
+    public Transform spawnPos;
+    public Transform[] spawnPoitns; //Array
     public List<GameObject> enemies; // Lista 
 
+    // Start is called before the first frame update
     void Start()
     {
-       
-        Spawn(1);
+        // InvokeRepeating("Spawn", 0, spawnRate); Nao pode usar coisa de amador
+
+        StartCoroutine(TesTe());
+
     }
 
+    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-
-        
         if (timer >= spawnRate)
         {
+            // Spawn(Random.Range(1,10));
             Spawn(1);
             timer = 0;
         }
-
-        
-        enemies.RemoveAll(item => item == null);
     }
-
     void Spawn(int qtd)
     {
         for (int i = 0; i < qtd; i++)
         {
-            int random = Random.Range(0, spawnPoints.Length);
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoints[random].position, spawnPoints[random].rotation);
-            enemies.Add(newEnemy);
-
-            
-            newEnemy.GetComponent<Enemy>().OnDeath += HandleEnemyDeath;
+            int random = Random.Range(0, spawnPoitns.Length);
+            enemies.Add(Instantiate(enemyPrefab, spawnPoitns[random].position, spawnPoitns[random].rotation));
+            /*
+            if (i == qtd / 2)
+            {
+                enemies[i].GetComponent<SpriteRenderer>().color = Color.black;
+            }
+            */
         }
+
+    }
+    IEnumerator TesTe()
+    {
+
+        for (int i = 0; i < 5; i++)
+        {
+            print("Foi" + i);
+            yield return new WaitForSeconds(2);
+        }
+
+
+
+
     }
 
-    
-    void HandleEnemyDeath(GameObject enemy)
-    {
-        enemies.Remove(enemy); 
-        Spawn(1); 
-    }
+
+
 }

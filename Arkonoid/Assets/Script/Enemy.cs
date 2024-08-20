@@ -5,16 +5,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public event Action<GameObject> OnDeath;
-
    
     void Die()
     {
         
-        if (OnDeath != null)
-        {
-            OnDeath(gameObject);
-        }
+       
 
         
         Destroy(gameObject);
@@ -23,7 +18,7 @@ public class Enemy : MonoBehaviour
    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Bola"))
         {
             Die();
         }

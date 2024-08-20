@@ -4,26 +4,45 @@ using UnityEngine;
 
 public class Bola : MonoBehaviour
 {
-    public float speed = 10f;
-    private Rigidbody2D rb;
+    public float speed;
+    int directionX = 1;
+    int directionY = 1;
 
+
+    Rigidbody2D body;
+    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        LaunchBall();
+        body = GetComponent<Rigidbody2D>();
     }
 
-    void LaunchBall()
+    // Update is called once per frame
+    void Update()
     {
-       
-        Vector2 direction = new Vector2(Random.Range(-1f, 1f), 1f).normalized;
-        rb.velocity = direction * speed;
+        body.velocity = new Vector2(speed * directionX, speed * directionY);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      
-        Vector2 reflectDir = Vector2.Reflect(rb.velocity.normalized, collision.contacts[0].normal);
-        rb.velocity = reflectDir * speed;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            directionY *= -1;
+        }
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            directionX *= -1;
+        }
+        if (collision.gameObject.CompareTag("Teto"))
+        {
+            directionY *= -1;
+        }
+
+
+        if (!collision.gameObject.CompareTag("Bloco"))
+        {
+            directionX *= -1;
+            Destroy(collision.gameObject);//Esse destroi o inimigo
+        }
     }
+    
+
 }
