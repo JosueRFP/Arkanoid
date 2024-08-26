@@ -1,48 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Bola : MonoBehaviour
 {
     public float speed;
-    int directionX = 1;
-    int directionY = 1;
+    private int directionX = 1;
+    private int directionY = 1;
 
+    private Rigidbody2D body;
+    private GameOver gameManager;
 
-    Rigidbody2D body;
-    // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameOver>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
         body.velocity = new Vector2(speed * directionX, speed * directionY);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             directionY *= -1;
+            Destroy(gameObject); // Destrói a bola
+            gameManager.ExibirTelaGameOver(); 
         }
+
         if (collision.gameObject.CompareTag("Parede"))
         {
             directionX *= -1;
         }
+
         if (collision.gameObject.CompareTag("Teto"))
         {
             directionY *= -1;
         }
 
-
-        if (!collision.gameObject.CompareTag("Bloco"))
+        if (collision.gameObject.CompareTag("Bloco"))
         {
             directionX *= -1;
-            Destroy(collision.gameObject);//Esse destroi o inimigo
+            Destroy(collision.gameObject); 
         }
     }
-    
-
 }
