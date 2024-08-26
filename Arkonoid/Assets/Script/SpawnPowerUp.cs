@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnPowerUp : MonoBehaviour
+{
+    public GameObject[] powerUps;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    void PowerUpsInstance()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(powerUps[i]);
+        }
+    }
+}
