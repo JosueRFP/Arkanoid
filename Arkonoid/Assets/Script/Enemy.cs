@@ -6,16 +6,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
    
-    void Die()
-    {
-        
-       
-
-        
-        Destroy(gameObject);
-    }
-
-   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bola"))
@@ -23,4 +13,16 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+    private void Die()
+    {
+
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.AddScore(10);
+        }
+
+        Destroy(gameObject);
+    }
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - Parede
   - Ground
   - Bloco
+  - Bola
   layers:
   - Default
   - TransparentFX

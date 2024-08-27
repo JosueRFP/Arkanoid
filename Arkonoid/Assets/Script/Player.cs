@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
     public float maxX = 8f;
+    public int score = 0; 
+    public int scoreToWin = 100; 
+    public Text scoreText;
+
+    void Start()
+    {
+        UpdateScoreText();
+    }
 
     void Update()
     {
@@ -15,5 +24,30 @@ public class Player : MonoBehaviour
         newPosition.x = Mathf.Clamp(newPosition.x, -maxX, maxX);
 
         transform.position = newPosition;
+
+        CheckScore(); 
+    }
+
+   
+    public void AddScore(int points)
+    {
+        score += points;
+        UpdateScoreText(); 
+    }
+
+   
+    void CheckScore()
+    {
+        if (score >= scoreToWin)
+        {
+            
+            SceneManager.LoadScene("Vitoria");
+        }
+    }
+
+   
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }

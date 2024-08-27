@@ -28,7 +28,7 @@ public class Bola : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             directionY *= -1;
-            Destroy(gameObject); // Destrói a bola
+            Destroy(gameObject);
             gameManager.ExibirTelaGameOver(); 
         }
 
@@ -38,6 +38,10 @@ public class Bola : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Teto"))
+        {
+            directionY *= -1;
+        }
+        if (collision.gameObject.CompareTag("Player"))
         {
             directionY *= -1;
         }
