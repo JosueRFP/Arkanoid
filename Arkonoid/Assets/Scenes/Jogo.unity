@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc8e3588e086eb4788f07b5e137a1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tijoloPrefab: {fileID: 0}
+  tijoloPrefab: {fileID: 1989524449157174000, guid: 805cd28918d8fe641ad6d9d4eff08240, type: 3}
   rowCount: 5
   enemiesPerRow: 6
   horizontalSpacing: 2
