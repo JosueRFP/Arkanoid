@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float speed = 10f;
     public float maxX = 8f;
     public int score = 0; 
-    public int scoreToWin = 100; 
+    public int scoreToWin = 500; 
     public Text scoreText;
 
     void Start()

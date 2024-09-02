@@ -9,6 +9,11 @@ TagManager:
   - Ground
   - Bloco
   - Bola
+  - Enemis_0
+  - Enemis_7
+  - Enemis_12
+  - Enemis_13
+  - Enemis_14
   layers:
   - Default
   - TransparentFX
