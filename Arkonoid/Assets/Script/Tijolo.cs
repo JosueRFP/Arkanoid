@@ -8,7 +8,7 @@ public class Tijolo : MonoBehaviour
     private SpawnTijolo spawner;
 
     public GameObject[] powerUps; 
-    public float dropChance = 0.4f; 
+    public float dropChance = 0.1f; 
     private bool canDrop = true;
 
     public void SetSpawner(SpawnTijolo spawner)
@@ -58,7 +58,7 @@ public class Tijolo : MonoBehaviour
     private IEnumerator ResetDropCooldown()
     {
         canDrop = false;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1.10f);
         canDrop = true;
     }
 }

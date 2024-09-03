@@ -1,32 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PalletGrowScript : MonoBehaviour
 {
-    public float grow = 1.7f; 
+    public float tamanhoAtual;
+    public float tamanhoMax;
+    public float high = 1.7f;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Bola"))
+        if (other.CompareTag("Player"))
         {
-            Scale(other);
+            Grow(other);
         }
     }
-    void Scale(Collider2D pallet)
+    void Grow (Collider2D pallet)
     {
-        pallet.transform.localScale *= grow;
+        if (tamanhoAtual >= tamanhoMax) 
+        {
+            return;
+        }
+        pallet.transform.localScale *= high;
+       
     }
 }

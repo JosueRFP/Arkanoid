@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GrowBallScript : MonoBehaviour
 {
+    public float bolaAtual;
+    public float bolaFinal;
     public int multiplier = 3;
     public float speed;
     // Start is called before the first frame update
@@ -19,19 +21,26 @@ public class GrowBallScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bola"))
+        if(bolaAtual >= bolaFinal)
         {
+            return;
+        }
+        if (other.CompareTag("Player"))
+        {           
             Pickup(other);
         }
+        
     }
     //tudo que está em verde é o tipo por exemplo os Collider2D.
     void Pickup(Collider2D bola)
     {
         Debug.Log("Pao de cada dia!");
 
+        //GetComponent<Bola>();
         bola.transform.localScale *= multiplier;
 
         Destroy(gameObject);
+      
     }
 
 

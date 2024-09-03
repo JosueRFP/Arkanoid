@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ExtraLifeScript : MonoBehaviour
 {
-    public int lifeMax;
+    public int actualLife;
+    public int lifeMax = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,21 @@ public class ExtraLifeScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("+ vida")) 
+        if (other.CompareTag("Player"))
         {
-            lifeMax += lifeMax;
-        }    
+            if(other.CompareTag("+ vida")) 
+            {
+                if (actualLife >= lifeMax)
+                    return;
+            actualLife += 1;
+            if(actualLife >= lifeMax)
+            {
+                actualLife = lifeMax;
+                Destroy(gameObject);
+            }
+
+            }    
+        }
+       
     }
 }

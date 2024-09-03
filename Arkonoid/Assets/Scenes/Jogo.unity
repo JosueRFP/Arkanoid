@@ -757,7 +757,7 @@ MonoBehaviour:
   speed: 10
   maxX: 9
   score: 0
-  scoreToWin: 220
+  scoreToWin: 450
   scoreText: {fileID: 424555486}
 --- !u!1 &987776896
 GameObject:
