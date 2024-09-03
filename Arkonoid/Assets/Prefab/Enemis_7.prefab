@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8843672933111367449}
   m_Layer: 0
   m_Name: Enemis_7
-  m_TagString: Enemis_7
+  m_TagString: Bloco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
