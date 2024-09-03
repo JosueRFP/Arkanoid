@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         if (score >= scoreToWin)
         {
             
-            SceneManager.LoadScene("Vitoria");
+            SceneManager.LoadScene("Victor");
         }
     }
 
